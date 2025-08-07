@@ -13,7 +13,7 @@ stages:
   - job: 'Build'
     displayName: 'Build job'
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: 'ubuntu-22.04'
     steps:
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
@@ -38,7 +38,10 @@ stages:
     - group: Release
     steps:
     - task: AzureWebAppContainer@1
+      displayName: 'Deploy to Azure Web App (Linux Container)'
       inputs:
-       appName: $(WebAppName)
-       azureSubscription: 'Resource Manager - Tailspin - Space Game'
-       imageName: $(RegistryName)/$(webRepository):$(build.buildId)
+        appName: $(WebAppName)
+        azureSubscription: 'Resource Manager - Tailspin - Space Game'
+        imageName: $(RegistryName)/$(webRepository):$(Build.BuildId)
+
+ 
