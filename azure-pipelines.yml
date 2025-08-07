@@ -40,7 +40,7 @@ stages:
     - task: AzureWebAppContainer@1
       displayName: 'Deploy to Azure Web App (Linux Container)'
       inputs:
-        appName: $(WebAppName)
+        appName: tailspin-space-game-web-15012
         azureSubscription: 'Resource Manager - Tailspin - Space Game'
         imageName: $(RegistryName)/$(webRepository):$(Build.BuildId)
 
